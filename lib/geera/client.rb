@@ -5,6 +5,7 @@ module Geera
 
     def initialize url
       @ctx = Jira4R::JiraTool.new 2, url
+      @ctx.driver.options["protocol.http.ssl_config.verify_mode"] = OpenSSL::SSL::VERIFY_NONE
 
       # Make jira4r quiet
       @ctx.logger = Logger.new nil
